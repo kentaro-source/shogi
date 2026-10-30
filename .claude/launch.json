@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "shogi",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["tests/serve.mjs", "8123"],
+      "port": 8123
+    }
+  ]
+}
