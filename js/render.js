@@ -3,7 +3,7 @@ import { kindOf, ownerOf, HAND_TYPES, SENTE, GOTE } from './rules.js';
 import { pieceGroup, pieceSvg } from './piece-svg.js';
 
 const PAD = 20, CELL = 100, SIZE = PAD * 2 + CELL * 9;
-const BAR_H = 96; // 手番表示とボタンの段の高さ（px）
+const BAR_H = 140; // 手番表示とボタンの段の高さ（px）
 
 const $ = (sel) => document.querySelector(sel);
 const sqX = (sq) => PAD + (sq % 9) * CELL;

@@ -54,7 +54,7 @@ html, body {
 
 .hand {
   flex: none;
-  height: calc(var(--cell) * 1.08);
+  height: calc(var(--cell) * 1.02);
   display: flex;
   align-items: center;
   gap: calc(var(--cell) * 0.06);
@@ -91,9 +91,9 @@ html, body {
   flex: 1;
   min-height: var(--bar-h);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
   padding: 0.5rem calc((100vw - var(--board)) / 2 + 8px);
 }
 .turn { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
@@ -109,7 +109,10 @@ html, body {
   border-radius: 10px;
   animation: pulse 1s ease-in-out infinite alternate;
 }
-.buttons { display: flex; gap: 10px; flex: none; }
+/* よく使う「待った」を大きく。押すと終わる「まいりました」は離して小さめに */
+.buttons { display: flex; align-items: center; gap: 10px; }
+.buttons [data-act="undo"] { flex: 1; min-height: 4.75rem; font-size: 1.75rem; margin-right: 2rem; }
+.buttons [data-act="resign"], .buttons [data-act="menu"] { font-size: 1.125rem; padding: 0 14px; }
 
 /* ---- ボタン ---- */
 .btn {
