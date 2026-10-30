@@ -4,8 +4,12 @@
 
 ## 現在地
 
-構成指示書（§0〜§10）の範囲を一通り実装済み。**未公開**（git リポジトリ未作成・GitHub Pages 未設定）。
-公開手順は README.md の「公開（初回）」。
+構成指示書（§0〜§10）の範囲を一通り実装済み。**公開済み**（2026-10-30）
+
+- 公開URL: https://kentaro-source.github.io/shogi/
+- リポジトリ: https://github.com/kentaro-source/shogi（public、Pages は main / root）
+- 公開版を Playwright で開いて確認: 駒40枚が出る・SW が制御・manifest（./ fullscreen portrait、アイコン3つ）・指せる・オフラインで再読み込みして指せる・キャッシュ shogi-v1 に14ファイル・エラーなし
+- 更新は README の「更新」（sw.js の CACHE_VERSION を上げて push）
 
 ## 確認済みのこと（2026-10-30 時点、手元の Chromium で実行して確認）
 
@@ -35,5 +39,4 @@ README.md の表を参照。テスト・確認用は `tests/`（`rules.test.js`�
 
 ## 次にやること
 
-1. GitHub にリポジトリを作って push、Pages を設定（README の手順）
-2. 実機で「未確認のこと」を確かめる
+1. 実機で「未確認のこと」を確かめる（Chrome で公開URLを開き「アプリをインストール」）
