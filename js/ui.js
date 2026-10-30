@@ -1,6 +1,6 @@
 // 入力処理、ダイアログ、メニュー
 import { kindOf, ownerOf, SENTE, GOTE, PROMOTE } from './rules.js';
-import { render, squareFromPoint, squareCenter, showDragPiece, hideDragPiece, resultReason } from './render.js';
+import { render, squareFromPoint, squareCenter, showDragPiece, hideDragPiece, resultReason, fitButtonText } from './render.js';
 import { pieceSvg } from './piece-svg.js';
 import { HANDICAPS } from './handicap.js';
 
@@ -21,6 +21,7 @@ export function initUI(app) {
     Object.assign(view, { game: app.game, settings: app.settings, roles: roles() });
     render(view);
     renderResult();
+    fitButtonText();
   }
 
   function select(sel) {
@@ -156,6 +157,7 @@ export function initUI(app) {
     panel.innerHTML = html;
     ov.appendChild(panel);
     $('#overlay-root').appendChild(ov);
+    fitButtonText(panel);
     const pos = place ? place(panel) : { x: window.innerWidth / 2, y: window.innerHeight * (owner === GOTE ? 0.3 : 0.7) };
     panel.style.left = `${pos.x}px`;
     panel.style.top = `${pos.y}px`;
@@ -281,7 +283,7 @@ export function initUI(app) {
     refresh();
   }
 
-  // ---- 終局表示（両者それぞれの向き。盤を隠さないよう、各側の持ち駒台に重ねる） ----
+  // ---- 終局表示（両者それぞれの向き。盤を隠さないよう、盤の外側に接して持ち駒台に重ねる） ----
   function renderResult() {
     const layer = $('#result-layer');
     const result = app.game.result;
@@ -302,9 +304,10 @@ export function initUI(app) {
     layer.hidden = false;
     for (const el of layer.querySelectorAll('.result')) {
       const owner = Number(el.dataset.owner);
-      const hand = $(`#side-${owner} .hand`).getBoundingClientRect();
-      el.style.left = `${hand.left + hand.width / 2}px`;
-      el.style.top = `${hand.top + hand.height / 2}px`;
+      const board = $('#board').getBoundingClientRect();
+      const half = el.offsetHeight / 2 + 6;
+      el.style.left = `${board.left + board.width / 2}px`;
+      el.style.top = `${owner === GOTE ? board.top - half : board.bottom + half}px`;
     }
   }
 

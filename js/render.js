@@ -10,11 +10,12 @@ const sqX = (sq) => PAD + (sq % 9) * CELL;
 const sqY = (sq) => PAD + ((sq / 9) | 0) * CELL;
 
 // 画面サイズから盤の大きさを決める。持ち駒台は 1 マスぶんの高さ。
-// 文字・ボタンは 1 マス 86px（800px 幅の画面）を基準に、大きい画面では拡大する（--ui）
+// 文字・ボタンは 1 マス 86px（800px 幅の画面）を基準に、大きい画面では拡大し、
+// スマホなどの狭い画面では 0.75 倍まで縮める（--ui）
 export function layout() {
   const w = window.innerWidth, h = window.innerHeight;
   const margin = Math.max(6, Math.round(w * 0.012));
-  const ui = Math.min(1.6, Math.max(1, (w - 2 * margin) / 9 / 86));
+  const ui = Math.min(1.6, Math.max(0.75, (w - 2 * margin) / 9 / 86));
   const bar = BAR_H * ui;
   const byHeight = (h - 2 * (bar + 16)) / (1 + 2 / 9);
   const board = Math.floor(Math.min(w - 2 * margin, byHeight));
@@ -23,6 +24,18 @@ export function layout() {
   root.setProperty('--cell', `${board / 9}px`);
   root.setProperty('--bar-h', `${bar}px`);
   root.setProperty('--ui', String(ui));
+}
+
+// ボタンの文字を 1 行に収める。入りきらないとき（狭い画面、端末の文字サイズ設定が大きいとき）は文字を縮める
+export function fitButtonText(root = document) {
+  for (const el of root.querySelectorAll('.btn')) {
+    el.style.fontSize = '';
+    let size = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth + 1 && size > 9) {
+      size -= 1;
+      el.style.fontSize = `${size}px`;
+    }
+  }
 }
 
 export function initBoard() {

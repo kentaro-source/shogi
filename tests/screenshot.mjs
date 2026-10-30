@@ -9,7 +9,7 @@ import { startServer } from './serve.mjs';
 const PORT = 8124;
 const BASE = `http://localhost:${PORT}/`;
 const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'screenshots');
-const SIZES = [{ width: 800, height: 1280 }, { width: 1200, height: 1920 }];
+const SIZES = [{ width: 800, height: 1280 }, { width: 1200, height: 1920 }, { width: 360, height: 780 }]; // 360 はスマホ（対象外だが崩れないかを見る）
 
 const HIRATE = 'lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1';
 const MIDGAME = ['7g7f', '3c3d', '8h2b+', '3a2b', '2g2f', '8c8d', '2f2e', '8d8e', '2e2d', '2c2d', '2h2d',
