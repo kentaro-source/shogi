@@ -109,7 +109,7 @@ html, body {
   border-radius: 10px;
   animation: pulse 1s ease-in-out infinite alternate;
 }
-/* よく使う「待った」を大きく。押すと終わる「まいりました」は離して小さめに */
+/* よく使う「まった」を大きく。押すと終わる「まいりました」は離して小さめに */
 .buttons { display: flex; align-items: center; gap: 10px; }
 .buttons [data-act="undo"] { flex: 1; min-height: 4.75rem; font-size: 1.75rem; margin-right: 2rem; }
 .buttons [data-act="resign"], .buttons [data-act="menu"] { font-size: 1.125rem; padding: 0 14px; }

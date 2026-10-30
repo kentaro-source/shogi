@@ -297,7 +297,7 @@ export function initUI(app) {
         const cls = result.winner === null ? 'draw' : result.winner === owner ? 'win' : 'lose';
         return `<div class="panel result${owner === GOTE ? ' flip' : ''}" data-owner="${owner}">` +
           `<div class="result-text"><div class="result-word ${cls}">${word}</div><div class="result-reason">${reason}</div></div>` +
-          '<div class="panel-buttons"><button class="btn" data-act="undo">待った</button>' +
+          '<div class="panel-buttons"><button class="btn" data-act="undo">まった</button>' +
           '<button class="btn primary" data-act="again">もう一局</button></div></div>';
       }).join('');
     }

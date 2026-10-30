@@ -1,6 +1,6 @@
 // Service Worker: 全ファイルを事前キャッシュし、cache-first で返す。
 // コードを直したら CACHE_VERSION を上げる（古いキャッシュは新しい版が有効になったときに消える）
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE = `shogi-${CACHE_VERSION}`;
 const FILES = [
   './',
